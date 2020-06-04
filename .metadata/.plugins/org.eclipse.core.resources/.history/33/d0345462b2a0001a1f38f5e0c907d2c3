@@ -1,0 +1,67 @@
+package com.PracticalExamples;
+
+import static org.testng.Assert.assertEquals;
+
+import java.util.concurrent.TimeUnit;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.testng.annotations.AfterMethod;
+import org.testng.annotations.BeforeMethod;
+import org.testng.annotations.Test;
+
+import io.github.bonigarcia.wdm.WebDriverManager;
+
+public class HiddenElementClass {
+	WebDriver driver;
+	WebDriverManager manager;
+	String baseUrl="https://rahulshettyacademy.com/AutomationPractice/";
+	String baseUrl1="https://www.expedia.co.in/";
+
+	@SuppressWarnings("static-access")
+	@BeforeMethod
+	public void setUp() {
+		manager.chromedriver().arch32().version("72.0").setup();
+		driver = new ChromeDriver();
+		driver.manage().timeouts().pageLoadTimeout(5,TimeUnit.SECONDS);
+		driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
+		driver.navigate().to(baseUrl1);
+		driver.manage().window().maximize();
+	}
+
+	@Test(priority = 1, enabled=false)
+	public void testHiddenElement() throws InterruptedException {
+		WebElement textBox = driver.findElement(By.cssSelector("#displayed-text"));
+		System.out.println("Text Box Displayed: "+textBox.isDisplayed());
+		
+		Thread.sleep(2000);
+		
+		WebElement hideButton = driver.findElement(By.cssSelector("#hide-textbox"));
+		hideButton.click();
+		System.out.println("Click on hide button");
+		System.out.println("Text Box Displayed: "+textBox.isDisplayed());
+		Thread.sleep(2000);
+
+		
+		WebElement showButton = driver.findElement(By.cssSelector("#show-textbox"));
+		showButton.click();
+		System.out.println("Click on show button");
+		System.out.println("Text Box Displayed: "+textBox.isDisplayed());
+		
+	}
+	
+	@Test(priority = 2)
+	public void testHiddenElement1() throws InterruptedException {
+		WebElement childDropdown=driver.findElement(By.cssSelector("select[class='gcw-storeable gcw-toggles-field-by-value gcw-child-age-select gcw-child-age-1-1-hc']"));
+		System.out.println("Child Dropdown Displayed: "+childDropdown.isDisplayed());
+
+	}
+
+
+	@AfterMethod
+	public void tearDown() {
+		driver.quit();
+	}
+}

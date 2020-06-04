@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Rename resource &apos;APIFramework&apos; to &apos;RESTAPIFramework&apos;" description="Rename resource &apos;APIFramework&apos;" flags="7" id="org.eclipse.ltk.core.refactoring.rename.resource" input="/APIFramework" name="RESTAPIFramework" stamp="1585660379977" updateReferences="true"/>
+</session>

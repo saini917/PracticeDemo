@@ -1,0 +1,23 @@
+package com.RegistrationOfFruitNursery;
+
+import java.io.IOException;
+
+import org.openqa.selenium.support.PageFactory;
+import org.testng.Assert;
+import org.testng.annotations.Listeners;
+import org.testng.annotations.Test;
+import com.Hphds_URL.Url;
+import com.RegistrationOfFruitNursery.FarmerLoginPage;
+
+@Listeners(com.utils.ScreenshotVariable.class)
+public class SMSLoginPageTest extends Url {
+	@Test(priority = 3)
+	public void test3() throws IOException {
+		extentTest = extent.startTest("test3");
+		FarmerLoginPage loginpage = PageFactory.initElements(driver, FarmerLoginPage.class);
+		loginpage.clcikOnLoginButton();
+		loginpage.EnterSMSLogin();
+		Assert.assertEquals(true, true);
+
+	}
+}

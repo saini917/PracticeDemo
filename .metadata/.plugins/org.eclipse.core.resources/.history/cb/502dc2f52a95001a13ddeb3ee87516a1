@@ -1,0 +1,42 @@
+package com.greenkart;
+
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.Iterator;
+
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.How;
+import org.testng.annotations.DataProvider;
+import org.testng.annotations.Test;
+import com.utils.Base;
+import com.utils.BrowserVariable;
+import com.utils.Constant;
+import com.utils.Excelutils;
+
+public class GetAllProductSearchTestPage extends Base {
+
+	public WebDriver driver;
+
+	@FindBy(how = How.CSS, using = "input[class*='search']")
+	private WebElement getAllProduct;
+
+	@DataProvider
+	public Iterator<Object[]> getAllProductName() {
+
+		ArrayList<Object[]> data = Excelutils.getDataFromExcel();
+		return data.iterator();
+	}
+	
+	@Test(dataProvider = "getAllProductName")
+	public void searchAllProduct(String ProductName) {
+
+		driver = initializeDriver(BrowserVariable.Chrome);
+		driver.get(Constant.url);
+		getAllProduct.sendKeys(ProductName);
+	}
+
+	
+
+}

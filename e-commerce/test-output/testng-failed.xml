@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite guice-stage="DEVELOPMENT" verbose="5" name="Failed suite [Suite]" parallel="classes">
+  <listeners>
+    <listener class-name="com.utils.Listeners"/>
+  </listeners>
+  <test thread-count="5" verbose="5" name="Search Product Name(failed)" parallel="classes">
+    <classes>
+      <class name="com.greenkart.ProductSearchTestPage">
+        <methods>
+          <include name="searchProductNameTest"/>
+          <include name="tearDown"/>
+        </methods>
+      </class> <!-- com.greenkart.ProductSearchTestPage -->
+    </classes>
+  </test> <!-- Search Product Name(failed) -->
+  <test thread-count="5" verbose="5" name="Compare Product Name(failed)" parallel="classes">
+    <classes>
+      <class name="com.greenkart.CompareItemTestPage">
+        <methods>
+          <include name="compareItemEnteredTest"/>
+          <include name="tearDown"/>
+        </methods>
+      </class> <!-- com.greenkart.CompareItemTestPage -->
+    </classes>
+  </test> <!-- Compare Product Name(failed) -->
+  <test thread-count="5" verbose="5" name="using + icon Add Number of Product item(failed)" parallel="classes">
+    <classes>
+      <class name="com.greenkart.NumberOfItemIncrementedTestPage">
+        <methods>
+          <include name="IncrementItemTest"/>
+          <include name="tearDown"/>
+        </methods>
+      </class> <!-- com.greenkart.NumberOfItemIncrementedTestPage -->
+    </classes>
+  </test> <!-- using + icon Add Number of Product item(failed) -->
+  <test thread-count="5" verbose="5" name="using - icon decrease Number of Product item(failed)" parallel="classes">
+    <classes>
+      <class name="com.greenkart.NumberOfItemDecrementedTestPage">
+        <methods>
+          <include name="decrementItemTest"/>
+          <include name="tearDown"/>
+        </methods>
+      </class> <!-- com.greenkart.NumberOfItemDecrementedTestPage -->
+    </classes>
+  </test> <!-- using - icon decrease Number of Product item(failed) -->
+  <test thread-count="5" verbose="5" name="Item Add to Cart(failed)" parallel="classes">
+    <classes>
+      <class name="com.greenkart.AddToCartTestPage">
+        <methods>
+          <include name="addToCartTestPage"/>
+          <include name="tearDown"/>
+        </methods>
+      </class> <!-- com.greenkart.AddToCartTestPage -->
+    </classes>
+  </test> <!-- Item Add to Cart(failed) -->
+  <test thread-count="5" verbose="5" name="Compare Add to Cart value(failed)" parallel="classes">
+    <classes>
+      <class name="com.greenkart.CompareAddToCartValueTestPage">
+        <methods>
+          <include name="compareAddCartValueTestPage"/>
+          <include name="tearDown"/>
+        </methods>
+      </class> <!-- com.greenkart.CompareAddToCartValueTestPage -->
+    </classes>
+  </test> <!-- Compare Add to Cart value(failed) -->
+  <test thread-count="5" verbose="5" name="Checkout the payment(failed)" parallel="classes">
+    <classes>
+      <class name="com.greenkart.ProceedToCheckoutTestPage">
+        <methods>
+          <include name="proceedToCheckoutTestPage"/>
+          <include name="tearDown"/>
+        </methods>
+      </class> <!-- com.greenkart.ProceedToCheckoutTestPage -->
+    </classes>
+  </test> <!-- Checkout the payment(failed) -->
+  <test thread-count="5" verbose="5" name="Place the Order(failed)" parallel="classes">
+    <classes>
+      <class name="com.greenkart.PlaceOrderTestPage">
+        <methods>
+          <include name="placeOrderTestPage"/>
+          <include name="tearDown"/>
+        </methods>
+      </class> <!-- com.greenkart.PlaceOrderTestPage -->
+    </classes>
+  </test> <!-- Place the Order(failed) -->
+  <test thread-count="5" verbose="5" name="select the Country(failed)" parallel="classes">
+    <classes>
+      <class name="com.greenkart.SelectCountryAndProceedTestPage">
+        <methods>
+          <include name="selectCountryTestPage"/>
+          <include name="tearDown"/>
+        </methods>
+      </class> <!-- com.greenkart.SelectCountryAndProceedTestPage -->
+    </classes>
+  </test> <!-- select the Country(failed) -->
+</suite> <!-- Failed suite [Suite] -->

@@ -1,0 +1,79 @@
+package com.LoginTest;
+
+import java.io.IOException;
+
+import org.openqa.selenium.support.PageFactory;
+import org.testng.annotations.Listeners;
+import org.testng.annotations.Test;
+import com.Hphds_URL.Url;
+import com.loginpage.LoginPage;
+
+
+@Listeners(com.utils.ScreenshotVariable.class)
+public class LoginTest extends Url {
+	
+	@Test(priority = 1)
+	public void test1() throws IOException, InterruptedException {
+		extentTest = extent.startTest("test1");
+		LoginPage loginpage=PageFactory.initElements(driver, LoginPage.class);
+		loginpage.clcikOnLoginButton();
+		loginpage.EnterFarmerLogin();
+		Thread.sleep(4000);
+
+	}
+
+	/*@Test(priority = 2)
+	public void test2() throws IOException {
+		extentTest = extent.startTest("test2");
+		LoginPage loginpage=PageFactory.initElements(driver, LoginPage.class);
+		loginpage.clcikOnLoginButton();
+		loginpage.EnterLoginDetails();
+	}
+		
+
+	@Test(priority = 3)
+	public void test3() throws IOException {
+		extentTest = extent.startTest("test3");
+		LoginPage loginpage=PageFactory.initElements(driver, LoginPage.class);
+		loginpage.clcikOnLoginButton();
+		loginpage.EnterLoginDetails();
+		
+	}
+
+	@Test(priority = 4)
+	public void test4() throws IOException {
+		extentTest = extent.startTest("test4");
+		LoginPage loginpage=PageFactory.initElements(driver, LoginPage.class);
+		loginpage.clcikOnLoginButton();
+		loginpage.EnterLoginDetails();
+		
+	}
+
+	@Test(priority = 5)
+	public void test5() throws IOException {
+		extentTest = extent.startTest("test5");
+		LoginPage loginpage=PageFactory.initElements(driver, LoginPage.class);
+		loginpage.clcikOnLoginButton();
+		loginpage.EnterLoginDetails();
+		
+	}
+
+	@Test(priority = 6)
+	public void test6() throws IOException {
+		extentTest = extent.startTest("test6");
+		LoginPage loginpage=PageFactory.initElements(driver, LoginPage.class);
+		loginpage.clcikOnLoginButton();
+		loginpage.EnterLoginDetails();
+		
+	}
+
+	@Test(priority = 7)
+	public void test7() throws IOException {
+		extentTest = extent.startTest("test7");
+		LoginPage loginpage=PageFactory.initElements(driver, LoginPage.class);
+		loginpage.clcikOnLoginButton();
+		loginpage.EnterLoginDetails();
+		
+	}*/
+
+}

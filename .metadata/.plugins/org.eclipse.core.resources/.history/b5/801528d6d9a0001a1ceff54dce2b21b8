@@ -1,0 +1,37 @@
+package Lambda;
+
+public class LambdaDeclaration {
+
+	public static void main(String s[]) {
+
+		/*
+		 * WebPage w1=new WebPage(){
+		 * 
+		 * public void header(String value) { System.out.println("hii "+value);
+		 * 
+		 * }
+		 * 
+		 * };
+		 * 
+		 * WebPage w2=new WebPage(){
+		 * 
+		 * public void header(String value) { System.out.println("hii "+value);
+		 * 
+		 * }
+		 * 
+		 * };
+		 * 
+		 * w1.header("google"); w2.header("facebook"); }
+		 */
+		
+		
+		
+
+		WebPage w1 = (value) -> System.out.println("hii " + value);
+		WebPage w2 = (value) -> System.out.println("hii " + value.toUpperCase());
+		WebPage w3 = (n) -> System.out.println("hii " + n.length());
+		w1.header("google");
+		w2.header("deepak");
+		w3.header("deepak");
+	}
+}

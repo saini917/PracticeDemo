@@ -1,0 +1,26 @@
+package com.greenkart;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.How;
+
+public class ProductNameList {
+
+	@FindBy(how = How.CSS, using = ".product-name")
+	private List<WebElement> productNames;
+
+	public void getProductName() {
+		List<String> names = new ArrayList<String>();
+		for (int i = 0; i <= productNames.size(); i++) {
+			String productName=productNames.get(i).getText();
+			names.add(productName);
+			for(String name:names){
+				System.out.println(name);
+			}
+		}
+	}
+
+}

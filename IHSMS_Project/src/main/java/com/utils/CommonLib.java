@@ -1,0 +1,575 @@
+package com.utils;
+
+import java.awt.AWTException;
+import java.awt.Robot;
+import java.awt.Toolkit;
+import java.awt.datatransfer.StringSelection;
+import java.awt.event.KeyEvent;
+import java.io.File;
+import java.io.IOException;
+import java.util.List;
+import java.util.concurrent.TimeUnit;
+
+import org.apache.commons.io.FileUtils;
+import org.openqa.selenium.Alert;
+import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
+import org.openqa.selenium.OutputType;
+import org.openqa.selenium.TakesScreenshot;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.ui.ExpectedCondition;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.Select;
+import org.openqa.selenium.support.ui.WebDriverWait;
+import org.testng.Assert;
+import org.testng.Reporter;
+
+
+public class CommonLib {
+	public static WebDriver driver;
+
+	/**************************************************************************************************************/
+	/**
+	 * waitForPageLoad() is used for wait till the page is loaded.
+	 * 
+	 * @param driver
+	 * @author deepak.saini
+	 * @since 2017-06-15
+	 */
+	/**************************************************************************************************************/
+	public void waitForDomElement() {
+		driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
+	}
+
+	/********************************************************************************************************/
+	/**
+	 * waitForLinkNamePresent() is used for wait till webelement link is present
+	 * or not.
+	 * 
+	 * @param linkName
+	 * @param driver
+	 * @author deepak.saini
+	 * @since 2017-06-15
+	 */
+	/**********************************************************************************************************/
+	public void waitForLinkNamePresent(String linkName) {
+		WebDriverWait wait = new WebDriverWait(driver, 30);
+		wait.until(ExpectedConditions.presenceOfAllElementsLocatedBy(By.linkText(linkName)));
+	}
+
+	/************************************************************************************************************/
+	/**
+	 * waitForPartialLinkPresent() is used for wait till webelement partial link
+	 * is present or not.
+	 * 
+	 * @param partialLinkName
+	 * @param driver
+	 * @author deepak.saini
+	 * @since 2017-06-15
+	 */
+	/************************************************************************************************************/
+	// public void waitForPartialLinkPresent(String partialLinkName)
+	// {
+	// WebDriverWait wait=new WebDriverWait(driver, 30); //Variable for future
+	// use.
+	// }
+
+	/************************************************************************************************************/
+	/**
+	 * waitForXpathPresent() is used for wait till any webelement is present or
+	 * not.
+	 * 
+	 * @param wbxpath
+	 * @param driver
+	 * @author deepak.saini
+	 * @since 2017-06-15
+	 */
+	/*************************************************************************************************************/
+	public void waitForXpathPresent(WebElement wbxpath, WebDriver driver) {
+		WebDriverWait wait = new WebDriverWait(driver, 30);
+		wait.until(ExpectedConditions.visibilityOf(wbxpath));
+	}
+
+	/************************************************************************************************/
+	/**
+	 * waitForIdPresent() is used for wait till ID of webelement is present or
+	 * not
+	 * 
+	 * @param wbID
+	 * @param driver
+	 * @author deepak.saini
+	 * @since 2017-06-15
+	 */
+	/****************************************************************************************************/
+	public void waitForIdPresent(String wbID) {
+		WebDriverWait wait = new WebDriverWait(driver, 30);
+		wait.until(ExpectedConditions.presenceOfAllElementsLocatedBy(By.id(wbID)));
+	}
+
+	/****************************************************************************************************/
+	/**
+	 * waitForNamePresent() is used for wait till Name of webelement is present
+	 * or not
+	 * 
+	 * @param wbNAME
+	 * @param driver
+	 * @author deepak.saini
+	 * @since 2017-06-15
+	 */
+	/****************************************************************************************************/
+	public void waitForNamePresent(String wbNAME) {
+		WebDriverWait wait = new WebDriverWait(driver, 30);
+		wait.until(ExpectedConditions.presenceOfAllElementsLocatedBy(By.name(wbNAME)));
+	}
+
+	/**************************************************************************************************/
+	/**
+	 * waitForVisibleElement() is used for wait till element is visible or not
+	 * 
+	 * @param wbVisibleElement
+	 * @param driver
+	 * @author deepak.saini
+	 * @since 2017-06-15
+	 */
+	/*******************************************************************************************************/
+	public void waitForVisibleElement(String wbVisibleElement) {
+		WebDriverWait wait = new WebDriverWait(driver, 30);
+		wait.until(ExpectedConditions.visibilityOfAllElementsLocatedBy(By.xpath(wbVisibleElement)));
+	}
+
+	/************************************************************************************************************/
+	/**
+	 * waitForInvisibleElement() is used for wait till element is
+	 * invisible/hidden or not.
+	 * 
+	 * @param wbInvisibleElement
+	 * @param driver
+	 * @author deepak.saini
+	 * @since 2017-06-15
+	 */
+	/**************************************************************************************************************/
+	public void waitForInvisibleElement(String wbInvisibleElement) {
+		WebDriverWait wait = new WebDriverWait(driver, 30);
+		wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath(wbInvisibleElement)));
+	}
+
+	/*************************************************************************************************************/
+	/**
+	 * waitForIsElementClickable() is used for wait till element is clickable or
+	 * not
+	 * 
+	 * @param wbIsClickable
+	 * @param driver
+	 * @author deepak.saini
+	 * @since 2017-06-15
+	 */
+	/************************************************************************************************************/
+	public void waitForIsElementClickable(WebElement wbIsClickable) {
+		WebDriverWait wait = new WebDriverWait(driver, 30);
+		wait.until(ExpectedConditions.elementToBeClickable(wbIsClickable));
+	}
+
+	/************************************************************************************************************/
+	/**
+	 * verifyText() is used to verify the expected value with the actual value.
+	 * 
+	 * @param wb
+	 * @param expectedMsg
+	 * @return
+	 * @author deepak.saini
+	 * @since 2017-06-15
+	 */
+	/**********************************************************************************************************/
+	public boolean verifyText(WebElement wb, String expectedMsg) {
+		boolean flag = false;
+		String actMsg = wb.getText();
+		if (expectedMsg.equals(actMsg)) {
+			flag = true;
+			System.out.println("msg is verified==pass");
+		} else {
+			System.out.println("msg is not verified==fail");
+		}
+		return flag;
+	}
+
+	/****************************************************************************************************/
+	/**
+	 * acceptAlert() is used to click on "OK" button of the alert pop up.
+	 * 
+	 * @param driver
+	 * @author deepak.saini
+	 * @since 2017-06-15
+	 */
+	/*******************************************************************************************************/
+	public void acceptAlert() {
+		WebDriverWait wait = new WebDriverWait(driver, 50);
+		wait.until(ExpectedConditions.alertIsPresent());
+		String alrt = driver.switchTo().alert().getText();
+		Alert alert = driver.switchTo().alert();
+		alert.accept();
+		Reporter.log("Expected result:" + alrt);
+	}
+
+	/***************************************************************************************************/
+	/**
+	 * dismissAlert() is used to "CANCEL" button of the alert pop up.
+	 * 
+	 * @param driver
+	 * @author deepak.saini
+	 * @since 2017-06-15
+	 */
+	/******************************************************************************************************/
+	public void dismissAlert() {
+		WebDriverWait wait = new WebDriverWait(driver, 50);
+		wait.until(ExpectedConditions.alertIsPresent());
+		String alrt = driver.switchTo().alert().getText();
+		Alert alert = driver.switchTo().alert();
+		alert.dismiss();
+		Reporter.log("Expected result:" + alrt);
+	}
+
+	/*******************************************************************************************************/
+	/**
+	 * getTextAlert() is used to get the textname of the webelement.
+	 * 
+	 * @param xpath
+	 * @param driver
+	 * @author deepak.saini
+	 * @since 2017-06-15
+	 */
+	/********************************************************************************************************/
+	public void getTextAlert(String xpath) {
+		Alert alert = driver.switchTo().alert();
+		String alrt = alert.getText();
+		System.out.println("WebElement Name:" + alrt);
+	}
+
+	/*******************************************************************************************************/
+	/**
+	 * pageForRefresh() is used to refresh the page
+	 * 
+	 * @param driver
+	 * @author deepak.saini
+	 * @since 2017-06-15
+	 */
+	/******************************************************************************************************/
+	public void pageForRefresh(WebDriver driver) {
+		driver.navigate().refresh();
+	}
+
+	/*******************************************************************************************************/
+	/**
+	 * deleteAllCookies() is used to delete all cookies.
+	 * 
+	 * @param driver
+	 * @author deepak.saini
+	 * @since 2017-06-15
+	 */
+	/*********************************************************************************************************/
+	public static void deleteAllCookies() {
+		driver.manage().deleteAllCookies();
+	}
+
+	/********************************************************************************************************/
+	/**
+	 * deleteCookiesName() is used to delete the specified name cookies.
+	 * 
+	 * @param driver
+	 * @param name
+	 * @author deepak.saini
+	 * @since 2107-06-15
+	 */
+	/*******************************************************************************************************/
+	public void deleteCookiesName(String name) {
+		driver.manage().deleteCookieNamed(name);
+	}
+
+	/*************************************************************************************************/
+	/**
+	 * windowMaximize() is used to maximize the window of the browser
+	 * 
+	 * @param driver
+	 * @author deepak.saini
+	 * @since 2017-06-15
+	 */
+	/***************************************************************************************************/
+	public static void windowMaximize() {
+		driver.manage().window().maximize();
+	}
+
+	/*************************************************************************************************/
+	/**
+	 * pageLoadTimeOut() Sets the amount of time to wait for a page load to
+	 * complete before throwing an error. If the timeout is negative, page loads
+	 * can be indefinite.
+	 * 
+	 * @author deepak.saini
+	 * @since 2017-06-20
+	 */
+	/*****************************************************************************************************/
+	public void pageLoadTimeOut() {
+		driver.manage().timeouts().pageLoadTimeout(500, TimeUnit.SECONDS);
+	}
+
+	/*****************************************************************************************************/
+	/**
+	 * setScriptTimeOut() Sets the amount of time to wait for an asynchronous
+	 * script to finish execution before throwing an error. If the timeout is
+	 * negative, then the script will be allowed to run indefinitely.
+	 * 
+	 * @author deepak.saini
+	 * @since 2017-06-20
+	 */
+	/****************************************************************************************************/
+	public void setScriptTimeOut() {
+		driver.manage().timeouts().setScriptTimeout(500, TimeUnit.SECONDS);
+	}
+
+	/**
+	 * The purpose of this method to sleep for a particular time when the
+	 * element is not visible
+	 * 
+	 * @throws InterruptedException
+	 * @author deepak.saini
+	 * @since 2017-07-04
+	 */
+	public void waitForSomeTime() throws InterruptedException {
+		Thread.sleep(3000);
+	}
+
+	/****************************************************************************
+	 * Purpose:Highlight the element to visible at time of Execution
+	 * 
+	 * @Author:Sarvesh.Nellore
+	 * @param:By element
+	 ***************************************************************************/
+	public void HighlightOnElement(WebElement element) {
+		JavascriptExecutor js = (JavascriptExecutor) driver;
+		js.executeScript("arguments[0].setAttribute('style', arguments[1]);", element,
+				"color: blue; border: 2px solid Magenta;");
+	}
+
+	/****************************************************************************
+	 * Purpose:Highlight the element to visible at time of Execution
+	 * 
+	 * @Author:Sarvesh.Nellore
+	 * @param:By element
+	 ***************************************************************************/
+	public void HighlightOnElement1(List<WebElement> element) {
+		JavascriptExecutor js = (JavascriptExecutor) driver;
+		js.executeScript("arguments[0].setAttribute('style', arguments[1]);", element,
+				"color: blue; border: 2px solid Magenta;");
+	}
+
+	/****************************************************************************
+	 * Purpose:Highlight the element to visible at time of Execution
+	 * 
+	 * @Author:Sarvesh.Nellore
+	 * @param:By element
+	 * @throws InterruptedException
+	 ***************************************************************************/
+	public void SelectVisibleText(WebElement element, String locatortext) throws InterruptedException {
+		try {
+			HighlightOnElement(element);
+			Select se = new Select(element);
+			List<WebElement> list = se.getOptions();
+			for (int index = 0; index < list.size(); index++) {
+				String s1 = list.get(index).getText();
+				if (s1.trim().equalsIgnoreCase(locatortext)) {
+					se.selectByVisibleText(locatortext);
+				}
+
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+
+	}
+
+	/****************************************************************************
+	 * Purpose:Highlight the element to visible at time of Execution
+	 * 
+	 * @Author:Sarvesh.Nellore
+	 * @param:By element
+	 * @throws InterruptedException
+	 ***************************************************************************/
+	public void SelectByIndex(WebElement element, String locatorIndex) throws InterruptedException {
+		try {
+			HighlightOnElement(element);
+			Select se = new Select(element);
+			List<WebElement> list = se.getOptions();
+			for (int index = 0; index < list.size(); index++) {
+				String s1 = list.get(index).getText();
+				if (s1.trim().equalsIgnoreCase(locatorIndex)) {
+					se.selectByIndex(index);
+				}
+
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+
+	}
+
+	/****************************************************************************
+	 * Purpose:Highlight the element to visible at time of Execution
+	 * 
+	 * @Author:Sarvesh.Nellore
+	 * @param:By element
+	 * @throws InterruptedException
+	 ***************************************************************************/
+	public void SelectByValue(WebElement element, String locatorValue) throws InterruptedException {
+		try {
+			HighlightOnElement(element);
+			Select se = new Select(element);
+			se.selectByValue(locatorValue);
+			List<WebElement> list = se.getOptions();
+			for (int index = 0; index < list.size(); index++) {
+				String s1 = list.get(index).getText();
+				if (s1.trim().equalsIgnoreCase(locatorValue)) {
+					se.selectByValue(locatorValue);
+				}
+
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		Thread.sleep(10000);
+	}
+
+	/****************************************************************************
+	 * Purpose:Boostrap Dropdown
+	 * 
+	 * @Author:Sarvesh.Nellore
+	 * @param:By element
+	 * @throws InterruptedException
+	 ***************************************************************************/
+	public void selectValueFromDropdown(String locateValue) throws InterruptedException {
+		List<WebElement> selectallvalue = driver.findElements(
+				By.xpath("//ul[@class='ui-autocomplete ui-front ui-menu ui-widget ui-widget-content']/li/a"));
+		try {
+			for (int i = 1; i < selectallvalue.size(); i++) {
+				WebElement Allelement = selectallvalue.get(i);
+				String listofelement = Allelement.getText();
+				Reporter.log(listofelement, true);
+				if (listofelement.trim().equalsIgnoreCase(locateValue)) {
+					Allelement.click();
+					break;
+				}
+
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		Thread.sleep(10000);
+	}
+
+	/**
+	 * To upload file
+	 * 
+	 * @param filepath
+	 * @throws AWTException
+	 * @author suresh.nellore
+	 */
+
+	public void UpLoadFile(String filepath) throws AWTException {
+		StringSelection stringselection = new StringSelection(filepath);
+		Toolkit.getDefaultToolkit().getSystemClipboard().setContents(stringselection, null);
+		Robot robot = new Robot();
+		robot.keyPress(KeyEvent.VK_ENTER);
+		robot.keyRelease(KeyEvent.VK_ENTER);
+		robot.keyPress(KeyEvent.VK_CONTROL);
+		robot.keyPress(KeyEvent.VK_V);
+		robot.keyRelease(KeyEvent.VK_V);
+		robot.keyRelease(KeyEvent.VK_CONTROL);
+		robot.keyPress(KeyEvent.VK_ENTER);
+		robot.keyRelease(KeyEvent.VK_ENTER);
+	}
+
+	/****************************************************************************
+	 * Purpose:Check Textbox Field Empty OR Not
+	 * 
+	 * @Author:Sarvesh.Nellore
+	 * @param:By element
+	 * @throws InterruptedException
+	 ***************************************************************************/
+	public void VerifyTextField(WebElement element) throws InterruptedException {
+		waitForSomeTime();
+
+		if (element.getAttribute("value").isEmpty()) {
+			// Do something if the text field is empty
+
+		} else {
+			// Store the value
+			HighlightOnElement(element);
+			String TextBox = element.getAttribute("value");
+			System.out.println("Textbox Value Is:=  " + TextBox);
+			waitForSomeTime();
+			waitForSomeTime();
+		}
+
+	}
+
+	public String getValueFromDropDown(WebElement element) {
+		List<WebElement> options = new Select(element).getOptions();
+		for (WebElement option : options) {
+			String DropdownValues = option.getText();
+
+			System.out.println("Dropdown List Is:" + DropdownValues);
+		}
+
+		return null;
+	}
+
+	public void selectVisibleFromDropdown(String locateValue) throws InterruptedException {
+		List<WebElement> selectallvalue = driver.findElements(
+				By.xpath("//ul[@class='ui-autocomplete ui-front ui-menu ui-widget ui-widget-content']/li/a"));
+		try {
+			for (int i = 1; i < selectallvalue.size(); i++) {
+				WebElement Allelement = selectallvalue.get(i);
+				String listofelement = Allelement.getText();
+				Reporter.log(listofelement, true);
+				if (listofelement.trim().equalsIgnoreCase(locateValue)) {
+					Allelement.click();
+					break;
+				}
+
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		Thread.sleep(10000);
+	}
+
+	public void waitForPageLoad() {
+		ExpectedCondition<Boolean> expectation = new ExpectedCondition<Boolean>() {
+			public Boolean apply(WebDriver driver) {
+				return ((JavascriptExecutor) driver).executeScript("return document.readyState").toString()
+						.equals("complete");
+			}
+		};
+		try {
+			waitForSomeTime();
+			WebDriverWait wait = new WebDriverWait(driver, 30);
+			wait.until(expectation);
+		} catch (Throwable error) {
+			Assert.fail("Timeout waiting for Page Load Request to complete.");
+		}
+	}
+	
+	
+	public static String getScreenshotPath(String TestCaseName,WebDriver driver){
+		String path= System.getProperty("user.dir")+ "\\reports\\"+ TestCaseName +" .png";
+		TakesScreenshot ts=(TakesScreenshot)driver;
+		File src=ts.getScreenshotAs(OutputType.FILE);
+		File dest=new File(path);
+		try {
+			FileUtils.copyFile(src, dest);
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		return path;
+	}
+
+}

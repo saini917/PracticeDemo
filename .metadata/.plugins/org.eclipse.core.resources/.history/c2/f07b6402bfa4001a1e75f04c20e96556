@@ -1,0 +1,68 @@
+import java.security.GeneralSecurityException;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
+
+public class JsonToJava {
+	static String url = "jdbc:mysql//localhost:3306";
+	static String username = "root";
+	static String password = "Reema@1994";
+
+	public static void main(String str[]) {
+		try {
+			Class.forName("com.mysql.cj.jdbc.Driver");
+		} catch (ClassNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		Connection conn = null;
+		try {
+			DriverManager.getConnection(url, username, password);
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+
+		// object of statement class will help us to execute queries
+
+		try {
+			Statement stm = conn.createStatement();
+			ResultSet rs = stm
+					.executeQuery("select * from CustomerInfo where Location ='Asia' and purchasedDate=curdate();");
+			//rs.next();// setting pointer to particular row
+			/*rs.getString(1);
+			rs.getString(2);
+			rs.getInt(3);
+			rs.getString(4);
+			
+			rs.next();
+			rs.getString(1);
+			rs.getString(2);
+			rs.getInt(3);
+			rs.getString(4);*/
+			
+			while(rs.next()){
+				System.out.println(rs.getString(1));
+				System.out.println(rs.getString(2));
+				System.out.println(rs.getInt(3));
+				System.out.println(rs.getString(4));
+			}
+			
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		finally {
+			try {
+				conn.close();
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
+	}
+
+}

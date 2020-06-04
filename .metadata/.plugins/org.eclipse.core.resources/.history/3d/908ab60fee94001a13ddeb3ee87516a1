@@ -1,0 +1,39 @@
+package com.greenkart;
+
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.How;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
+import org.testng.Assert;
+
+import com.utils.Base;
+
+public class CompareAddToCartValue extends Base {
+	WebDriverWait wait = new WebDriverWait(driver, 20);
+	
+	@FindBy(how = How.CSS, using = "input.quantity")
+	private WebElement numberOfItem;
+
+	public void addCartValue() throws InterruptedException {
+		
+		NumberOfItemIncremented inc = new NumberOfItemIncremented();
+		inc.ItemEnteredUsingPlus();
+		String count=numberOfItem.getText();
+		System.out.println("Added item count in the editbox: "+count);
+		
+	}
+	
+	@FindBy(how = How.CSS, using = "div.cart-info>table>tbody>tr:nth-of-type(1)>td>strong")
+	private WebElement numberItems;
+	
+	public void getAddCartValue(){
+		wait.until(ExpectedConditions.visibilityOf( numberItems));
+		Assert.assertTrue( numberItems.isDisplayed());
+		HighlightOnElement( numberItems);
+		Assert.assertTrue( numberItems.isEnabled());
+		
+		String count=numberItems.getText();
+		System.out.println("Added item count in the cart: "+count);
+	}
+}

@@ -1,0 +1,8 @@
+
+public class CustomDetailAppium {
+	private String courseName;
+	private String purchaseDate;
+	private int Amount;
+	private String Location;
+	private String studentName;
+}

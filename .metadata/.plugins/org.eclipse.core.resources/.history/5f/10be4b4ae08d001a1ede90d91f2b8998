@@ -1,0 +1,24 @@
+package com.RegistrationOfFruitNursery;
+
+import java.io.IOException;
+
+import org.openqa.selenium.support.PageFactory;
+import org.testng.Assert;
+import org.testng.annotations.Listeners;
+import org.testng.annotations.Test;
+import com.Hphds_URL.Url;
+import com.RegistrationOfFruitNursery.FarmerLoginPageTest;
+
+@Listeners(com.utils.ScreenshotVariable.class)
+public class MSTCALoginPageTest extends Url {
+	@Test(priority = 5)
+	public void test5() throws IOException {
+		extentTest = extent.startTest("test5");
+		FarmerLoginPageTest loginpage = PageFactory.initElements(driver, FarmerLoginPageTest.class);
+		loginpage.clcikOnLoginButton();
+		loginpage.EnterMSTLogin();
+		Assert.assertEquals(true, true);
+
+	}
+
+}

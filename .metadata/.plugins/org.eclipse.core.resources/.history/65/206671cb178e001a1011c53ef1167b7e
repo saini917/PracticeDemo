@@ -1,0 +1,21 @@
+package com.RegistrationOfFruitNursery;
+
+import java.io.IOException;
+
+import org.openqa.selenium.support.PageFactory;
+import org.testng.Assert;
+import org.testng.annotations.Listeners;
+import org.testng.annotations.Test;
+import com.Hphds_URL.Url;
+
+@Listeners(com.utils.ScreenshotVariable.class)
+public class HDOLoginPageTest extends Url {
+	@Test(priority = 2)
+	public void HDOLoginTest() throws IOException, InterruptedException {
+		//extentTest = extent.startTest("HDOLoginTest");
+		HDOLoginPage loginpage = PageFactory.initElements(driver, HDOLoginPage.class);
+		loginpage.clcikOnLoginButton();
+		loginpage.EnterHDOLogin();
+		Assert.assertEquals(true, false);
+	}
+}

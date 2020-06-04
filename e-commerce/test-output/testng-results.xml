@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testng-results skipped="0" failed="0" ignored="0" total="10" passed="10">
+  <reporter-output>
+  </reporter-output>
+  <suite name="Suite" duration-ms="264590" started-at="2020-05-20T06:30:48Z" finished-at="2020-05-20T06:35:12Z">
+    <groups>
+    </groups>
+    <test name="Sorting Product Name List" duration-ms="16556" started-at="2020-05-20T06:30:48Z" finished-at="2020-05-20T06:31:04Z">
+      <class name="com.greenkart.ProductNamesListTestPage">
+        <test-method status="PASS" signature="productNamesTest()[pri:1, instance:com.greenkart.ProductNamesListTestPage@282003e1]" name="productNamesTest" duration-ms="15505" started-at="2020-05-20T06:30:48Z" finished-at="2020-05-20T06:31:03Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- productNamesTest -->
+        <test-method status="PASS" signature="tearDown()[pri:0, instance:com.greenkart.ProductNamesListTestPage@282003e1]" name="tearDown" is-config="true" duration-ms="1011" started-at="2020-05-20T06:31:03Z" finished-at="2020-05-20T06:31:04Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- tearDown -->
+      </class> <!-- com.greenkart.ProductNamesListTestPage -->
+    </test> <!-- Sorting Product Name List -->
+    <test name="Search Product Name" duration-ms="37961" started-at="2020-05-20T06:31:05Z" finished-at="2020-05-20T06:31:43Z">
+      <class name="com.greenkart.ProductSearchTestPage">
+        <test-method status="PASS" signature="searchProductNameTest()[pri:1, instance:com.greenkart.ProductSearchTestPage@64d7f7e0]" name="searchProductNameTest" duration-ms="36993" started-at="2020-05-20T06:31:05Z" finished-at="2020-05-20T06:31:42Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- searchProductNameTest -->
+        <test-method status="PASS" signature="tearDown()[pri:0, instance:com.greenkart.ProductSearchTestPage@64d7f7e0]" name="tearDown" is-config="true" duration-ms="961" started-at="2020-05-20T06:31:42Z" finished-at="2020-05-20T06:31:43Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- tearDown -->
+      </class> <!-- com.greenkart.ProductSearchTestPage -->
+    </test> <!-- Search Product Name -->
+    <test name="Compare Product Name" duration-ms="15527" started-at="2020-05-20T06:31:43Z" finished-at="2020-05-20T06:31:58Z">
+      <class name="com.greenkart.CompareItemTestPage">
+        <test-method status="PASS" signature="compareItemEnteredTest()[pri:1, instance:com.greenkart.CompareItemTestPage@1e9e725a]" name="compareItemEnteredTest" duration-ms="14572" started-at="2020-05-20T06:31:43Z" finished-at="2020-05-20T06:31:57Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- compareItemEnteredTest -->
+        <test-method status="PASS" signature="tearDown()[pri:0, instance:com.greenkart.CompareItemTestPage@1e9e725a]" name="tearDown" is-config="true" duration-ms="950" started-at="2020-05-20T06:31:57Z" finished-at="2020-05-20T06:31:58Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- tearDown -->
+      </class> <!-- com.greenkart.CompareItemTestPage -->
+    </test> <!-- Compare Product Name -->
+    <test name="using + icon Add Number of Product item" duration-ms="24871" started-at="2020-05-20T06:31:58Z" finished-at="2020-05-20T06:32:23Z">
+      <class name="com.greenkart.NumberOfItemIncrementedTestPage">
+        <test-method status="PASS" signature="IncrementItemTest()[pri:1, instance:com.greenkart.NumberOfItemIncrementedTestPage@19dc67c2]" name="IncrementItemTest" duration-ms="23879" started-at="2020-05-20T06:31:58Z" finished-at="2020-05-20T06:32:22Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- IncrementItemTest -->
+        <test-method status="PASS" signature="tearDown()[pri:0, instance:com.greenkart.NumberOfItemIncrementedTestPage@19dc67c2]" name="tearDown" is-config="true" duration-ms="988" started-at="2020-05-20T06:32:22Z" finished-at="2020-05-20T06:32:23Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- tearDown -->
+      </class> <!-- com.greenkart.NumberOfItemIncrementedTestPage -->
+    </test> <!-- using + icon Add Number of Product item -->
+    <test name="using - icon decrease Number of Product item" duration-ms="24556" started-at="2020-05-20T06:32:23Z" finished-at="2020-05-20T06:32:48Z">
+      <class name="com.greenkart.NumberOfItemDecrementedTestPage">
+        <test-method status="PASS" signature="decrementItemTest()[pri:1, instance:com.greenkart.NumberOfItemDecrementedTestPage@6b1274d2]" name="decrementItemTest" duration-ms="23634" started-at="2020-05-20T06:32:23Z" finished-at="2020-05-20T06:32:47Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- decrementItemTest -->
+        <test-method status="PASS" signature="tearDown()[pri:0, instance:com.greenkart.NumberOfItemDecrementedTestPage@6b1274d2]" name="tearDown" is-config="true" duration-ms="920" started-at="2020-05-20T06:32:47Z" finished-at="2020-05-20T06:32:48Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- tearDown -->
+      </class> <!-- com.greenkart.NumberOfItemDecrementedTestPage -->
+    </test> <!-- using - icon decrease Number of Product item -->
+    <test name="Item Add to Cart" duration-ms="18294" started-at="2020-05-20T06:32:48Z" finished-at="2020-05-20T06:33:06Z">
+      <class name="com.greenkart.AddToCartTestPage">
+        <test-method status="PASS" signature="addToCartTestPage()[pri:1, instance:com.greenkart.AddToCartTestPage@6a472554]" name="addToCartTestPage" duration-ms="17356" started-at="2020-05-20T06:32:48Z" finished-at="2020-05-20T06:33:05Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- addToCartTestPage -->
+        <test-method status="PASS" signature="tearDown()[pri:0, instance:com.greenkart.AddToCartTestPage@6a472554]" name="tearDown" is-config="true" duration-ms="935" started-at="2020-05-20T06:33:05Z" finished-at="2020-05-20T06:33:06Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- tearDown -->
+      </class> <!-- com.greenkart.AddToCartTestPage -->
+    </test> <!-- Item Add to Cart -->
+    <test name="Compare Add to Cart value" duration-ms="28209" started-at="2020-05-20T06:33:06Z" finished-at="2020-05-20T06:33:34Z">
+      <class name="com.greenkart.CompareAddToCartValueTestPage">
+        <test-method status="PASS" signature="compareAddCartValueTestPage()[pri:1, instance:com.greenkart.CompareAddToCartValueTestPage@4d339552]" name="compareAddCartValueTestPage" duration-ms="27284" started-at="2020-05-20T06:33:06Z" finished-at="2020-05-20T06:33:33Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- compareAddCartValueTestPage -->
+        <test-method status="PASS" signature="tearDown()[pri:0, instance:com.greenkart.CompareAddToCartValueTestPage@4d339552]" name="tearDown" is-config="true" duration-ms="923" started-at="2020-05-20T06:33:33Z" finished-at="2020-05-20T06:33:34Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- tearDown -->
+      </class> <!-- com.greenkart.CompareAddToCartValueTestPage -->
+    </test> <!-- Compare Add to Cart value -->
+    <test name="Checkout the payment" duration-ms="30686" started-at="2020-05-20T06:33:34Z" finished-at="2020-05-20T06:34:05Z">
+      <class name="com.greenkart.ProceedToCheckoutTestPage">
+        <test-method status="PASS" signature="proceedToCheckoutTestPage()[pri:1, instance:com.greenkart.ProceedToCheckoutTestPage@4450d156]" name="proceedToCheckoutTestPage" duration-ms="29658" started-at="2020-05-20T06:33:34Z" finished-at="2020-05-20T06:34:04Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- proceedToCheckoutTestPage -->
+        <test-method status="PASS" signature="tearDown()[pri:0, instance:com.greenkart.ProceedToCheckoutTestPage@4450d156]" name="tearDown" is-config="true" duration-ms="1022" started-at="2020-05-20T06:34:04Z" finished-at="2020-05-20T06:34:05Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- tearDown -->
+      </class> <!-- com.greenkart.ProceedToCheckoutTestPage -->
+    </test> <!-- Checkout the payment -->
+    <test name="Place the Order" duration-ms="31813" started-at="2020-05-20T06:34:05Z" finished-at="2020-05-20T06:34:37Z">
+      <class name="com.greenkart.PlaceOrderTestPage">
+        <test-method status="PASS" signature="placeOrderTestPage()[pri:1, instance:com.greenkart.PlaceOrderTestPage@255b53dc]" name="placeOrderTestPage" duration-ms="30828" started-at="2020-05-20T06:34:05Z" finished-at="2020-05-20T06:34:36Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- placeOrderTestPage -->
+        <test-method status="PASS" signature="tearDown()[pri:0, instance:com.greenkart.PlaceOrderTestPage@255b53dc]" name="tearDown" is-config="true" duration-ms="979" started-at="2020-05-20T06:34:36Z" finished-at="2020-05-20T06:34:37Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- tearDown -->
+      </class> <!-- com.greenkart.PlaceOrderTestPage -->
+    </test> <!-- Place the Order -->
+    <test name="select the Country" duration-ms="35280" started-at="2020-05-20T06:34:37Z" finished-at="2020-05-20T06:35:12Z">
+      <class name="com.greenkart.SelectCountryAndProceedTestPage">
+        <test-method status="PASS" signature="selectCountryTestPage()[pri:1, instance:com.greenkart.SelectCountryAndProceedTestPage@176d53b2]" name="selectCountryTestPage" duration-ms="34275" started-at="2020-05-20T06:34:37Z" finished-at="2020-05-20T06:35:11Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- selectCountryTestPage -->
+        <test-method status="PASS" signature="tearDown()[pri:0, instance:com.greenkart.SelectCountryAndProceedTestPage@176d53b2]" name="tearDown" is-config="true" duration-ms="1002" started-at="2020-05-20T06:35:11Z" finished-at="2020-05-20T06:35:12Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- tearDown -->
+      </class> <!-- com.greenkart.SelectCountryAndProceedTestPage -->
+    </test> <!-- select the Country -->
+  </suite> <!-- Suite -->
+</testng-results>

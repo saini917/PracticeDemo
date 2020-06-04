@@ -1,0 +1,4 @@
+Selenium4.outdir=test-output
+WinAppDriver.outdir=test-output
+com.Practical.outdir=test-output
+eclipse.preferences.version=1

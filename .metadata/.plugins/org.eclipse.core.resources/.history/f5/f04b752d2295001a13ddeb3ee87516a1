@@ -1,0 +1,26 @@
+package com.greenkart;
+
+import java.io.IOException;
+
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.support.PageFactory;
+import org.testng.annotations.Test;
+
+import com.utils.Base;
+import com.utils.BrowserVariable;
+import com.utils.Constant;
+
+public class GetAllProductSearchTestPage extends Base {
+
+	public WebDriver driver;
+
+	@Test(priority = 1,dataProvider="getAllProductName")
+	public void addToCartTestPage() throws IOException, InterruptedException {
+		driver = initializeDriver(BrowserVariable.Chrome);
+		driver.get(Constant.url);
+		
+		GetAllProductSearch searchAll=PageFactory.initElements(driver,GetAllProductSearch.class);
+
+	}
+
+}

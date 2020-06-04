@@ -1,0 +1,9 @@
+package LoginPage;
+
+public class Snippet {
+	public static void main(String[] args) {
+		System.out.println(data.get(1));
+				System.out.println(data.get(2));
+	}
+}
+

@@ -1,0 +1,55 @@
+package com.utils;
+
+import org.testng.ITestContext;
+import org.testng.ITestListener;
+import org.testng.ITestResult;
+
+public class ScreenshotVariable extends Browser_Intialize implements ITestListener{
+
+	public void onFinish(ITestContext arg0) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	public void onStart(ITestContext arg0) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	public void onTestFailedButWithinSuccessPercentage(ITestResult arg0) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	public void onTestFailure(ITestResult arg0) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	public void onTestSkipped(ITestResult arg0) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	public void onTestStart(ITestResult arg0) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	public void onTestSuccess(ITestResult result) {
+		EventFiringWebDriver fdriver = new EventFiringWebDriver(driver);
+		File sourcefile = fdriver.getScreenshotAs(OutputType.FILE);
+		File destinatiofile = new File(
+				successTestCase_ScreenShotLocation + result.getName() + getDateTimeStamp() + ".png");
+		try {
+			FileUtils.copyFile(sourcefile, destinatiofile);
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		String filePath = destinatiofile.toString();
+		String path = "<img src=\"file://" + filePath + "\" alt=\"\"/>";
+		Reporter.log(path, true);
+
+	}
+
+}

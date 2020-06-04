@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="Suite" parallel="classes" verbose="5">
+	<listeners>
+		<listener class-name="com.utils.Listeners" />
+	</listeners>
+
+	<test name="farmerLoginTest">
+		<classes>
+			<class name="com.RegistrationOfFruitNursery.FarmerLoginPageTest" />
+		</classes>
+	</test>
+
+	<test name="hdoLoginTest">
+		<classes>
+			<class name="com.RegistrationOfFruitNursery.HDOLoginPageTest" />
+		</classes>
+	</test>
+	<test name="ddhLoginTest">
+		<classes>
+			<class name="com.RegistrationOfFruitNursery.DDHLoginPageTest" />
+		</classes>
+	</test>
+
+	<test name="mstcaLoginTest">
+		<classes>
+			<class name="com.RegistrationOfFruitNursery.MSTCALoginPageTest" />
+		</classes>
+	</test>
+
+</suite>

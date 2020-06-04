@@ -1,0 +1,11 @@
+org.eclipse.core.runtime.CoreException: Node not found
+	at org.eclipse.epp.internal.mpc.core.service.DefaultMarketplaceService.getNode(DefaultMarketplaceService.java:270)
+	at org.eclipse.epp.internal.mpc.core.service.DefaultMarketplaceService.getNode(DefaultMarketplaceService.java:1)
+	at org.eclipse.epp.internal.mpc.core.service.CachingMarketplaceService.getNode(CachingMarketplaceService.java:127)
+	at org.eclipse.epp.internal.mpc.ui.catalog.MarketplaceDiscoveryStrategy.computeInstalled(MarketplaceDiscoveryStrategy.java:505)
+	at org.eclipse.epp.internal.mpc.ui.catalog.MarketplaceDiscoveryStrategy.installed(MarketplaceDiscoveryStrategy.java:486)
+	at org.eclipse.epp.internal.mpc.ui.catalog.MarketplaceCatalog$6.run(MarketplaceCatalog.java:115)
+	at org.eclipse.epp.internal.mpc.ui.catalog.MarketplaceCatalog.performDiscovery(MarketplaceCatalog.java:409)
+	at org.eclipse.epp.internal.mpc.ui.catalog.MarketplaceCatalog.installed(MarketplaceCatalog.java:113)
+	at org.eclipse.epp.internal.mpc.ui.wizards.MarketplaceViewer$6.run(MarketplaceViewer.java:502)
+	at org.eclipse.jface.operation.ModalContext$ModalContextThread.run(ModalContext.java:119)

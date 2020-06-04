@@ -1,0 +1,60 @@
+package com.PracticalExamples;
+
+import java.util.List;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.testng.annotations.AfterMethod;
+import org.testng.annotations.BeforeMethod;
+import org.testng.annotations.Test;
+import io.github.bonigarcia.wdm.WebDriverManager;
+
+public class RadioButtonExample {
+
+	WebDriver driver;
+	WebDriverManager manager;
+
+	@SuppressWarnings("static-access")
+	@BeforeMethod
+	public void setUp() {
+		manager.chromedriver().arch32().version("72.0").setup();
+		driver = new ChromeDriver();
+		driver.navigate().to("https://rahulshettyacademy.com/AutomationPractice/");
+		driver.manage().window().maximize();
+	}
+
+	@Test(priority = 1)
+	public void testRadioButton() throws InterruptedException {
+
+		WebElement radio = driver.findElement(By.cssSelector("[value='radio1']"));
+		radio.click();
+		Thread.sleep(3000);
+	}
+
+	// click on all radio button one by one
+	@Test(priority = 2)
+	public void testMultipleRadioButton() throws InterruptedException {
+		List<WebElement> radios = driver.findElements(By.cssSelector(".radioButton"));
+		int size = radios.size();
+		for (int i = 1; i < size; i++) {
+			if (radios.get(i).isDisplayed()) {
+				if (radios.get(i).isEnabled()) {
+					for (int j = 1; j < size; j++) {
+						if (radios.get(i).isSelected()) {
+							radios.get(i).click();
+						}
+					}
+				}
+			}
+			radios.get(i).click();
+		}
+		Thread.sleep(3000);
+	}
+
+	@AfterMethod
+	public void tearDown() {
+		driver.close();
+	}
+}

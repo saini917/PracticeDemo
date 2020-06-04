@@ -1,0 +1,62 @@
+package com.utils;
+
+import java.io.File;
+import java.io.IOException;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Date;
+import org.apache.commons.io.FileUtils;
+import org.openqa.selenium.JavascriptExecutor;
+import org.openqa.selenium.OutputType;
+import org.openqa.selenium.TakesScreenshot;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.events.EventFiringWebDriver;
+
+public class CaptureScreenhotInExtentReport {
+	public static int scc = 0;
+
+	public static String captuteScreenshot(WebDriver driver, String screenShotName) throws IOException {
+		EventFiringWebDriver fdriver = new EventFiringWebDriver(driver);
+		File sourcefile = fdriver.getScreenshotAs(OutputType.FILE);
+
+		String destination = System.getProperty("user.dir") + "/FailedScreenshot/" + screenShotName + getDateTimeStamp()
+				+ scc + ".png";
+
+		File finaldestination = new File(destination);
+		FileUtils.copyFile(src, finaldestination);
+
+		return destination;
+	}
+
+	/********************************************************************************************************************/
+	/**
+	 * getDateTimeStamp() is used for display the month,date and time stamp
+	 * along with failed testcases.
+	 * 
+	 * @return
+	 * @author deepak.saini
+	 * @since 2017-06-16
+	 */
+	/********************************************************************************************************************/
+	public static String getDateTimeStamp() {
+		// creates a date time stamp that is Windows OS filename compatible
+		return new SimpleDateFormat(" MMM dd   HH.mm.ss").format(Calendar.getInstance().getTime());
+	}
+
+	public static void highLightElement(WebDriver driver, WebElement element) {
+		JavascriptExecutor js = (JavascriptExecutor) driver;
+		js.executeScript("arguments[0].setAttribute('style', 'background: yellow; border: 2px solid red;');", element);
+
+		try {
+			Thread.sleep(500);
+		} catch (InterruptedException e) {
+
+			System.out.println(e.getMessage());
+		}
+
+		js.executeScript("arguments[0].setAttribute('style','border: solid 2px white');", element);
+
+	}
+
+}

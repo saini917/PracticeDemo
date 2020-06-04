@@ -1,0 +1,25 @@
+package WinAppDriverDemo;
+
+import java.net.MalformedURLException;
+import java.net.URL;
+
+import org.openqa.selenium.remote.DesiredCapabilities;
+import org.testng.annotations.BeforeClass;
+
+import io.appium.java_client.windows.WindowsDriver;
+
+public class NotePadTest {
+	
+	public static WindowsDriver driver=null;
+	
+	@BeforeClass
+	public void setUp() throws MalformedURLException{
+		DesiredCapabilities cap=new DesiredCapabilities();
+		cap.setCapability("app", "C:\\Windows\\System32\\notepad.exe");
+		cap.setCapability("platformName", "Windows");
+		cap.setCapability("deviceName", "WindowsPC");
+		
+		driver=new WindowsDriver(new URL("http://127.0.0.1:4723/"), cap);
+	}
+
+}

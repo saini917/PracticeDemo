@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite verbose="0" name="Failed suite [Command line suite]">
+  <test name="Command line test(failed)">
+    <classes>
+      <class name="com.RegistrationOfFruitNursery.DDHLoginPageTest">
+        <methods>
+          <include name="ddhLoginTest"/>
+          <include name="tearDown"/>
+        </methods>
+      </class> <!-- com.RegistrationOfFruitNursery.DDHLoginPageTest -->
+      <class name="com.RegistrationOfFruitNursery.MSTCALoginPageTest">
+        <methods>
+          <include name="mstcaLoginTest"/>
+          <include name="tearDown"/>
+        </methods>
+      </class> <!-- com.RegistrationOfFruitNursery.MSTCALoginPageTest -->
+      <class name="com.RegistrationOfFruitNursery.HDOLoginPageTest">
+        <methods>
+          <include name="hdoLoginTest"/>
+          <include name="tearDown"/>
+        </methods>
+      </class> <!-- com.RegistrationOfFruitNursery.HDOLoginPageTest -->
+      <class name="com.RegistrationOfFruitNursery.FarmerLoginPageTest">
+        <methods>
+          <include name="farmerLoginTest"/>
+          <include name="tearDown"/>
+        </methods>
+      </class> <!-- com.RegistrationOfFruitNursery.FarmerLoginPageTest -->
+    </classes>
+  </test> <!-- Command line test(failed) -->
+</suite> <!-- Failed suite [Command line suite] -->

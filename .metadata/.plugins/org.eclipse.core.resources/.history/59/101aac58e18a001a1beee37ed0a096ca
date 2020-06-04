@@ -1,0 +1,39 @@
+package com.LoginTest;
+
+import static org.testng.Assert.assertEquals;
+
+import java.io.IOException;
+import java.util.ArrayList;
+
+import org.testng.annotations.Listeners;
+import org.testng.annotations.Test;
+import com.Hphds_URL.Url;
+import com.utils.Excelutils;
+
+@Listeners(com.utils.ScreenshotVariable.class)
+public class LoginTest extends Url{
+	Excelutils d= new Excelutils();
+	@Test(priority=1)
+	public void googleTestChrome() throws IOException {
+		extentTest= extent.startTest("googleTestChrome");
+		
+		ArrayList<String> data =d.getData("Purchase");
+		System.out.println(data.get(0));
+		System.out.println(data.get(1));
+		
+	}
+
+
+	@Test(priority=2)
+	public void googleTestFirefox() {
+		extentTest= extent.startTest("googleTestFirefox");
+		assertEquals(false,true);
+	}
+	
+	@Test(priority=3)
+	public void googleTestIE() {
+		extentTest= extent.startTest("googleTestIE");
+		assertEquals(false,true);
+	}
+
+}

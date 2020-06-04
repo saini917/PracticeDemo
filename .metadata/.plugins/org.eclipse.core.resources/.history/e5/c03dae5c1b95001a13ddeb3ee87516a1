@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="Suite" parallel="classes" verbose="5">
+	<listeners>
+		<listener class-name="com.utils.Listeners" />
+	</listeners>
+
+	<!-- <test name="Product Name List">
+		<classes>
+			<class name="com.greenkart.ProductNamesListTestPage" />
+		</classes>
+	</test>
+
+	<test name="Search Product Name">
+		<classes>
+			<class name="com.greenkart.ProductSearchTestPage" />
+		</classes>
+	</test>
+
+	<test name="Add Number of Product Name">
+		<classes>
+			<class name="com.greenkart.NumberOfItemEnteredTestPage" />
+		</classes>
+	</test>
+
+	<test name="using + icon Add Number of Product item">
+		<classes>
+			<class name="com.greenkart.NumberOfItemIncrementedTestPage" />
+		</classes>
+	</test>
+
+	<test name="using - icon decrease Number of Product item">
+		<classes>
+			<class name="com.greenkart.NumberOfItemDecrementedTestPage" />
+		</classes>
+	</test>
+
+	<test name="Item Add to Cart">
+		<classes>
+			<class name="com.greenkart.AddToCartTestPage" />
+		</classes>
+	</test> -->
+	
+	<test name="Compare Add to Cart value">
+		<classes>
+			<class name="com.greenkart.CompareAddToCartValueTestPage" />
+		</classes>
+	</test>
+</suite>

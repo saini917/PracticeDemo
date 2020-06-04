@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="Suite">
+
+	<listeners>
+		<listener class-name="com.utils.ExtentReport" />
+	</listeners>
+	<test name="verify Farmer Login">
+		<classes>
+			<class name="com.RegistrationOfFruitNursery.FarmerLoginPageTest" />
+			<methods>
+				<include name="farmerLoginTest" />
+			</methods>
+			</test>
+			
+			<test name ="verify HDO Login">
+			
+			<class name="com.RegistrationOfFruitNursery.HDOLoginPageTest" />
+			<methods>
+				<include name="HDOLoginTest" />
+			</methods>
+			</test>
+			
+			<test name="verify DDH Login">
+			<class name="com.RegistrationOfFruitNursery.DDHLoginPageTest" />
+			<methods>
+				<include name="DDHLoginTest" />
+			</methods>
+			</test>
+			
+			<test name="verify MSTCA Login">
+			<class name="com.RegistrationOfFruitNursery.MSTCALoginPageTest" />
+			<methods>
+				<include name="MSTCALoginTest" />
+			</methods>
+		</classes>
+	</test>
+</suite> 

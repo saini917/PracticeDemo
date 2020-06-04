@@ -1,0 +1,131 @@
+package com.utils;
+
+public class ScreenshotVariable extends Browser_Intialize implements ITestListener, IRetryAnalyzer, IAnnotationTransformer {
+	static String failureTestCase_ScreenShotLocation = "C:\\ILFS\\NRDA\\workspace\\NRDA_FRAMEWORK\\NRDA_PROJECT\\Failure_Screenshot\\";
+	static String successTestCase_ScreenShotLocation = "C:\\ILFS\\NRDA\\workspace\\NRDA_FRAMEWORK\\NRDA_PROJECT\\Success_ScreenShot\\";
+	public int scc = 0;
+	private int retryCnt = 0;
+	private int maxRetryCnt = 1;
+	/*
+	 * maxRetryCnt (Maximiun Retry Count) as per your requirement. Here I took
+	 * 1, If any failed testcases then it runs two times
+	 */
+
+	@Override
+	public void onFinish(ITestContext arg0) {
+		// TODO Auto-generated method stub
+
+	}
+
+	@Override
+	public void onStart(ITestContext arg0) {
+		// TODO Auto-generated method stub
+
+	}
+
+	@Override
+	public void onTestFailedButWithinSuccessPercentage(ITestResult arg0) {
+		// TODO Auto-generated method stub
+
+	}
+
+	/*************************************************************************************************************/
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see org.testng.ITestListener#onTestFailure(org.testng.ITestResult)
+	 * onTestFailure() is used to take the ScreenShot and store in the Specified
+	 * path folder' EventFiringWebDriver listenser is a webdriver class which is
+	 * used to help to take ScreenShot by using non-static method
+	 * getScreenshotAs() pass the Output File Type as a argument. FileUtils is a
+	 * apache class having Static copyFile() used to store the screenshot from
+	 * source to destination.
+	 * 
+	 * @author deepak.saini
+	 * 
+	 * @since 2017-06-16
+	 */
+	/****************************************************************************************************************/
+	@Override
+	public void onTestFailure(ITestResult result) {
+		EventFiringWebDriver fdriver = new EventFiringWebDriver(driver);
+		File sourcefile = fdriver.getScreenshotAs(OutputType.FILE);
+		File destinatiofile = new File(
+				failureTestCase_ScreenShotLocation + result.getName() + getDateTimeStamp() + scc + ".png");
+		try {
+			FileUtils.copyFile(sourcefile, destinatiofile);
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		String filePath = destinatiofile.toString();
+		String path = "<img src=\"file://" + filePath + "\" alt=\"\"/>";
+		Reporter.log(path, true);
+	}
+
+	/********************************************************************************************************************/
+	/**
+	 * getDateTimeStamp() is used for display the month,date and time stamp
+	 * along with failed testcases.
+	 * 
+	 * @return
+	 * @author deepak.saini
+	 * @since 2017-06-16
+	 */
+	/********************************************************************************************************************/
+	public static String getDateTimeStamp() {
+		// creates a date time stamp that is Windows OS filename compatible
+		return new SimpleDateFormat(" MMM dd   HH.mm.ss").format(Calendar.getInstance().getTime());
+	}
+
+	@Override
+	public void onTestSkipped(ITestResult arg0) {
+		// TODO Auto-generated method stub
+
+	}
+
+	@Override
+	public void onTestStart(ITestResult arg0) {
+		// TODO Auto-generated method stub
+
+	}
+
+	@Override
+	public void onTestSuccess(ITestResult result) {
+		EventFiringWebDriver fdriver = new EventFiringWebDriver(driver);
+		File sourcefile = fdriver.getScreenshotAs(OutputType.FILE);
+		File destinatiofile = new File(
+				successTestCase_ScreenShotLocation + result.getName() + getDateTimeStamp() + ".png");
+		try {
+			FileUtils.copyFile(sourcefile, destinatiofile);
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		String filePath = destinatiofile.toString();
+		String path = "<img src=\"file://" + filePath + "\" alt=\"\"/>";
+		Reporter.log(path, true);
+
+	}
+
+	@Override
+	public boolean retry(ITestResult result) {
+		if (retryCnt < maxRetryCnt) {
+			System.out.println("Retrying " + result.getName() + " again and the count is " + (retryCnt + 1));
+			retryCnt++;
+			return true;
+		}
+		return false;
+	}
+
+	@Override
+	public void transform(ITestAnnotation testannotation, Class testClass, Constructor testConstructor,
+			Method testMethod) {
+		IRetryAnalyzer retry = testannotation.getRetryAnalyzer();
+
+		if (retry == null) {
+			testannotation.setRetryAnalyzer(ListenerDriver.class);
+		}
+
+	}
+
+
+}

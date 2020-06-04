@@ -1,0 +1,35 @@
+package com.Hphds_URL;
+
+import com.utils.Browser_Intialize;
+import com.utils.ConstantVaribale;
+import com.utils.GlobalVariables;
+
+import org.apache.log4j.Logger;
+import org.testng.annotations.AfterMethod;
+import org.testng.annotations.BeforeMethod;
+
+public class Url extends Browser_Intialize{
+	Logger log=Logger.getLogger("devpinoyLogger");
+	
+	/*****************************************************************************************************************/
+	/**
+	 *  BeforeMethod annotation is used to open Url of application 
+	 * 	@author deepak.saini
+	 * @throws InterruptedException 
+	 *  @since 2017-08-03 
+	 */
+	/****************************************************************************************************************/
+	@BeforeMethod
+	public void openBrowser()
+	{
+		Browser_Intialize.launchBrowser(GlobalVariables.Chrome).navigate().to(ConstantVaribale.url);
+		log.info("Step1: opening Application Website");
+	}
+	
+	@AfterMethod
+	public void closeBrowser()
+	{
+		driver.close();
+	}
+
+}

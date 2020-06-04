@@ -1,0 +1,55 @@
+package com.greenkart;
+
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.logging.Logger;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.How;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
+import org.testng.Assert;
+
+import com.utils.Base;
+import com.utils.Excelutils;
+
+public class ProductSearch extends Base{
+	
+	ProductNameList namelist=new ProductNameList();
+	
+	Excelutils d = new Excelutils();
+	ArrayList<String> data;
+	Logger log = Logger.getLogger("devpinoyLogger");
+	WebDriverWait wait = new WebDriverWait(driver, 20);
+	int height;
+	int width;
+	
+	@FindBy(how = How.CSS, using = "input[class*='search']")
+	private WebElement searchProd;
+
+	public void searchEditBox() throws InterruptedException{
+		wait.until(ExpectedConditions.visibilityOf(searchProd));
+		Assert.assertTrue(searchProd.isDisplayed());
+		HighlightOnElement(searchProd);
+		Assert.assertTrue(searchProd.isEnabled());
+		wait.until(ExpectedConditions.elementToBeClickable(searchProd));
+		try {
+			data=d.getProductName("Product_4");
+		} catch (IOException e) {
+			
+			e.printStackTrace();
+		}
+		searchProd.sendKeys(data.get(1));
+		
+		height = searchProd.getRect().getDimension().getHeight();
+		width = searchProd.getRect().getDimension().getWidth();
+		
+		System.out.println("Height of Product search  box: " + height);
+		System.out.println("Width of Product search  box: " + width);
+		
+		Thread.sleep(3000);
+	}
+	
+	
+
+}

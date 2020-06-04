@@ -1,0 +1,36 @@
+package com.greenkart;
+
+import static org.openqa.selenium.support.locators.RelativeLocator.withTagName;
+
+import java.util.logging.Logger;
+
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.How;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
+import org.testng.Assert;
+
+import com.utils.Base;
+
+public class PlaceOrder extends Base{
+
+	Logger log = Logger.getLogger("devpinoyLogger");
+	@SuppressWarnings("deprecation")
+	WebDriverWait wait = new WebDriverWait(driver, 20);
+	int height;
+	int width;
+
+	@FindBy(how = How.CSS, using = "div.products>div>div+b")
+	private WebElement item;
+	
+	public void clickOnCheckout() throws InterruptedException{
+		wait.until(ExpectedConditions.visibilityOf(item));
+		Assert.assertTrue(item.isDisplayed());
+		HighlightOnElement(item);
+		Assert.assertTrue(item.isEnabled());
+		wait.until(ExpectedConditions.elementToBeClickable(item));
+		
+	}
+
+}

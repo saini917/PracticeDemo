@@ -1,0 +1,40 @@
+package com.greenkart;
+
+import java.io.IOException;
+
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.support.PageFactory;
+import org.testng.annotations.Test;
+import com.utils.Base;
+import com.utils.BrowserVariable;
+import com.utils.Constant;
+
+public class CompareAddToCartValueTestPage extends Base {
+
+	public WebDriver driver;
+	
+
+	@Test(priority = 1)
+	public void addToCartTestPage() throws IOException, InterruptedException {
+		driver = initializeDriver(BrowserVariable.Chrome);
+		driver.get(Constant.url);
+		
+		ProductSearch prodnameSearch = PageFactory.initElements(driver, ProductSearch.class);
+		prodnameSearch.searchEditBox();
+		
+		NumberOfItemIncremented item_count = PageFactory.initElements(driver, NumberOfItemIncremented.class);
+		item_count.ItemEnteredUsingPlus();
+		
+		CompareAddToCartValue cartValue=PageFactory.initElements(driver, CompareAddToCartValue.class);
+		cartValue.addCartValue();
+		cartValue.getAddCartValue();
+
+		AddToCart cart=PageFactory.initElements(driver, AddToCart.class);
+		cart.addToCart();
+		
+		
+		cartValue.compareAddToCartValue();
+
+	}
+
+}

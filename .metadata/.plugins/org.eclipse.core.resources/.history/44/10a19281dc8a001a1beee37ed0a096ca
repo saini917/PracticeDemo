@@ -1,0 +1,100 @@
+package com.Hphds_URL;
+
+import com.relevantcodes.extentreports.ExtentReports;
+import com.relevantcodes.extentreports.ExtentTest;
+import com.relevantcodes.extentreports.LogStatus;
+import com.utils.Browser_Intialize;
+import com.utils.CaptureScreenhotInExtentReport;
+import com.utils.ConstantVaribale;
+import com.utils.EnumGlobalVariables;
+import com.utils.ScreenshotVariable;
+
+import java.io.IOException;
+
+import org.apache.log4j.Logger;
+import org.testng.ITestResult;
+import org.testng.annotations.AfterMethod;
+import org.testng.annotations.AfterTest;
+import org.testng.annotations.BeforeMethod;
+import org.testng.annotations.BeforeTest;
+
+public class Url extends Browser_Intialize{
+	Logger log=Logger.getLogger("devpinoyLogger");
+	public ExtentReports extent;
+	public ExtentTest extentTest;
+	
+	@BeforeTest
+	public void setExtent()
+	{
+		extent= new ExtentReports(System.getProperty("user.dir")+ "/test-output/LoginTestReport.html",true);
+		extent.addSystemInfo("Host Name","Deepak Development");
+		extent.addSystemInfo("User Name","Deepak Saini");
+		extent.addSystemInfo("Enviornment","QA");
+		extent.addSystemInfo("Java version","1.8");
+		extent.addSystemInfo("OS","Window10");
+
+	}
+
+	@AfterTest
+	public void endExtent()
+	{
+		extent.flush();
+		extent.close();
+	}
+	
+	/*****************************************************************************************************************/
+	/**
+	 *  BeforeMethod annotation is used to open Url of application 
+	 * 	@author deepak.saini
+	 * @throws InterruptedException 
+	 *  @since 2017-08-03 
+	 */
+	/****************************************************************************************************************/
+	@BeforeMethod
+	public void setUp()
+	{
+		Browser_Intialize.launchBrowser(EnumGlobalVariables.Chrome).navigate().to(ConstantVaribale.url);
+		log.info("Step1: opening Application Website");
+	}
+	
+	/*@AfterMethod
+	public void closeBrowser()
+	{
+		driver.close();
+	}*/
+	
+	@AfterMethod
+	public void tearDown(ITestResult result) throws IOException
+	{
+
+		if(ITestResult.FAILURE==result.getStatus())
+		{
+			extentTest.log(LogStatus.FAIL,"TEST CASE FAILED IS" +result.getName()); // to add name in extent report
+			extentTest.log(LogStatus.FAIL,"TEST CASE FAILED IS" +result.getThrowable()); // to add error/exception in extent report
+
+			String Screenshotpath=CaptureScreenhotInExtentReport.captuteScreenshot(driver, result.getName());
+			extentTest.log(LogStatus.FAIL,extentTest.addScreenCapture(Screenshotpath)); // to add screenshot in extent report
+		}
+
+		else if(ITestResult.SUCCESS==result.getStatus())
+		{
+			extentTest.log(LogStatus.PASS,"TEST CASE PASSED IS" +result.getName()); // to add name in extent report
+			extentTest.log(LogStatus.PASS,"TEST CASE PASSED IS" +result.getThrowable()); // to add error/exception in extent report
+
+			String Screenshotpath=CaptureScreenhotInExtentReport.captuteScreenshot(driver, result.getName());
+			extentTest.log(LogStatus.PASS,extentTest.addScreenCapture(Screenshotpath)); // to add screenshot in extent report
+		}
+
+		else if(ITestResult.SKIP==result.getStatus())
+		{
+			extentTest.log(LogStatus.SKIP,"TEST CASE SKIPED IS" +result.getName()); // to add name in extent report
+			extentTest.log(LogStatus.SKIP,"TEST CASE SKIPED IS" +result.getThrowable()); // to add error/exception in extent report	
+		}
+
+		extent.endTest(extentTest); // ending test and end the current test and prepare the html report
+
+		driver.quit();
+	}
+	
+
+}

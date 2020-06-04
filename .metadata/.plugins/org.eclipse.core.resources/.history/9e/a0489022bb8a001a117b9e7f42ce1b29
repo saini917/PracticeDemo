@@ -1,0 +1,28 @@
+package com.Hphds_URL;
+
+import com.utils.Browser_Intialize;
+import com.utils.ConstantVaribale;
+import org.apache.log4j.Logger;
+import org.testng.annotations.BeforeMethod;
+
+public class Url extends Browser_Intialize{
+	Logger log=Logger.getLogger("devpinoyLogger");
+	
+	/*****************************************************************************************************************/
+	/**
+	 *  BeforeMethod annotation is used to open Url of application 
+	 * 	@author deepak.saini
+	 * @throws InterruptedException 
+	 *  @since 2017-08-03 
+	 */
+	/****************************************************************************************************************/
+	@BeforeMethod
+	public void openBrowser()
+	{
+		Browser_Intialize(ConstantInstanceDriver.browser).navigate().to(ConstantInstanceDriver.url);
+		log.info("Step1: opening Application Website");
+		windowMaximize();
+		log.info(" Step3: Maximize the Window");
+	}
+
+}

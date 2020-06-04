@@ -1,0 +1,22 @@
+package com.extentreport.ExtentReport;
+
+import org.openqa.selenium.WebDriver;
+import org.testng.annotations.Test;
+
+import com.utils.Base;
+import com.utils.BrowserVariable;
+import com.utils.Constant;
+
+public class Test2 extends Base {
+	WebDriver driver;
+
+	@Test(priority=2)
+	public void googleTitleValidation() {
+		driver = initializeDriver(BrowserVariable.Chrome);
+		driver.get(Constant.url);
+		System.out.println(driver.getTitle());
+		driver.close();
+
+	}
+
+}

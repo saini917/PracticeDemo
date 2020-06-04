@@ -1,0 +1,30 @@
+package com.LoginTest;
+
+import org.testng.annotations.Test;
+
+import com.utils.Browser_Intialize;
+
+public class LoginTest extends Browser_Intialize{
+	
+	@Test(priority=1)
+	public void googleTestChrome() {
+		driver = launchBrower(Browser_Intialize.Chrome);
+		driver.get("https://www.google.com/");
+		driver.close();
+	}
+
+	@Test(priority=2)
+	public void googleTestFirefox() {
+		driver = launchBrower(Browser_Intialize.firefox);
+		driver.get("https://www.google.com/");
+		driver.close();
+	}
+	
+	@Test(priority=3)
+	public void googleTestIE() {
+		driver = launchBrower(Browser_Intialize.ie);
+		driver.get("https://www.google.com/");
+		driver.close();
+	}
+
+}

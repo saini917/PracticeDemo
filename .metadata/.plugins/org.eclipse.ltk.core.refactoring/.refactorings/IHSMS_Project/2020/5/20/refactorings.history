@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Copy element &apos;RealData.xlsx&apos; to &apos;HPHDS/src/java/resource&apos;&#x0D;&#x0A;- Original project: &apos;IHSMS_Project&apos;&#x0D;&#x0A;- Destination element: &apos;HPHDS/src/java/resource&apos;&#x0D;&#x0A;- Original element: &apos;RealData.xlsx&apos;" description="Copy file" destination="=HPHDS/src\/java\/resource" element1="src/main/resource/RealData.xlsx" files="1" flags="589830" folders="0" id="org.eclipse.jdt.ui.copy" policy="org.eclipse.jdt.ui.copyResources" stamp="1589117791697" units="0" version="1.0"/>
+</session>

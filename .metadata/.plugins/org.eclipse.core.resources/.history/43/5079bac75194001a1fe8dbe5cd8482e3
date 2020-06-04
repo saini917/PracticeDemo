@@ -1,0 +1,44 @@
+package com.greenkart;
+
+import java.util.ArrayList;
+import java.util.logging.Logger;
+
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.How;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
+import org.testng.Assert;
+
+import com.utils.Base;
+import com.utils.Excelutils;
+
+public class AddToCart extends Base {
+
+	Excelutils d = new Excelutils();
+	ArrayList<String> data;
+	Logger log = Logger.getLogger("devpinoyLogger");
+	@SuppressWarnings("deprecation")
+	WebDriverWait wait = new WebDriverWait(driver, 20);
+	int height;
+	int width;
+	
+	// using + buttons
+		@FindBy(how = How.CSS, using = "div.product-action>button")
+		private WebElement decrement;
+
+		public void ItemEnteredDecrement() throws InterruptedException {
+
+			wait.until(ExpectedConditions.visibilityOf(decrement));
+			Assert.assertTrue(decrement.isDisplayed());
+			HighlightOnElement(decrement);
+			Assert.assertTrue(decrement.isEnabled());
+			wait.until(ExpectedConditions.elementToBeClickable(decrement));
+
+			for (int incr = 2; incr <= 4; incr++) {
+				decrement.click();
+			}
+			Thread.sleep(2000);
+		}
+
+}

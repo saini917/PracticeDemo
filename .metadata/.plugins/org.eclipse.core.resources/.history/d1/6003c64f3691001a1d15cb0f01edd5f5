@@ -1,0 +1,57 @@
+package com.greenkart;
+
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.How;
+
+public class ProductNameList {
+
+ /*
+	 * @comments is given by deepak .saini
+	 * This CSS selector is used to get all the product name that are available on the Webpage
+ */
+	@FindBy(how = How.CSS, using = ".product-name")
+	private List<WebElement> productNames;
+
+  /*
+	  * @comments is given by deepak .saini
+	  *i variable is used to iterate all the elements
+	  *j is used to iterate all the product name to compare each product name with each other
+	  *size variable is used to get the total number of product name count 
+	  *prodName variable ios used to store all the product name
+	  *temp variable is used to store temporary product name and compare
+	  *List is used to store all the product names and if in future new item is added automatically its increses the size
+ */
+	
+	int index_size, j, size;
+	String prodName, temp;
+	List<String> names = new ArrayList<String>();;
+
+	public void getProductName() {
+
+		for (index_size = 0; index_size < productNames.size(); i++) {
+			prodName = productNames.get(i).getText();
+			names.add(prodName);
+		}
+
+		String prod[] = new String[names.size()];
+		for (j = 0; j < names.size(); j++) {
+			prod[j] = names.get(j);
+		}
+		size = prod.length;
+
+		for (index_size = 0; index_size < size - 1; i++) {
+			for (j = index_size + 1; j < prod.length; j++) {
+				if (prod[index_size].compareTo(prod[j]) > 0) {
+					temp = prod[index_size];
+					prod[index_size] = prod[j];
+					prod[j] = temp;
+				}
+			}
+		}
+		System.out.println(Arrays.toString(prod));
+	}
+}

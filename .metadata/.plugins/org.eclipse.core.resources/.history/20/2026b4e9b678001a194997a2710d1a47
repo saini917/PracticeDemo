@@ -1,0 +1,75 @@
+package com.json;
+
+import org.testng.annotations.Test;
+
+import com.jayway.restassured.http.ContentType;
+import com.jayway.restassured.response.Response;
+import static com.jayway.restassured.RestAssured.*;
+
+public class JasonServerRequest {
+	
+	//Get   /posts
+	@Test
+	public void getRequest(){
+		Response resp=given().
+		when().
+		get("http://localhost:3000/posts");
+		
+		System.out.println("Get response is: " +resp.asString());
+	}
+	
+	
+	//POST   /posts
+	//@Test
+	public void postRequest(){
+		
+		Response resp=given().
+		body(" {\"id\":\"7\", "
+				+ "\"title\": \"Saini\", "
+				+ "\"author\":\"deepak\"}").
+		when().
+		then().
+		contentType(ContentType.JSON).
+		post("http://localhost:3000/posts");
+		
+		System.out.println(resp.asString());
+		
+	}
+	
+	//@Test
+	public void testPostRequest(){
+		Posts posts=new Posts();
+		posts.setId("7");
+		posts.setTitle("post request by id");
+		posts.setAuthor("siya");
+		
+		Response resp=given().
+		body(posts).
+		when().
+		then().
+		contentType(ContentType.JSON).
+		post("http://localhost:3000/posts");
+		
+		System.out.println(resp.asString());
+	}
+	
+	
+	//PUT     /posts/1
+	   @Test
+		public void testPutRequest(){
+			Posts posts=new Posts();
+			posts.setId("7");
+			posts.setTitle("post request by id");
+			posts.setAuthor("siya");
+			
+			Response resp=given().
+			body(posts).
+			when().
+			then().
+			contentType(ContentType.JSON).
+			post("http://localhost:3000/posts");
+			
+			System.out.println(resp.asString());
+		}
+
+}

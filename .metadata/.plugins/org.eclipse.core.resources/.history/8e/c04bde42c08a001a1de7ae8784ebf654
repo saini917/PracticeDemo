@@ -1,0 +1,28 @@
+package com.LoginTest;
+
+import static org.testng.Assert.assertEquals;
+
+import org.testng.annotations.Listeners;
+import org.testng.annotations.Test;
+import com.Hphds_URL.Url;
+
+@Listeners(com.utils.ScreenshotVariable.class)
+public class LoginTest extends Url{
+	
+	@Test(priority=1)
+	public void googleTestChrome() {
+		extentTest= extent.startTest("verifyTitle");
+	}
+
+	@Test(priority=2)
+	public void googleTestFirefox() {
+		extentTest= extent.startTest("verifyTitle");
+	}
+	
+	@Test(priority=3)
+	public void googleTestIE() {
+		extentTest= extent.startTest("verifyTitle");
+		assertEquals(false,true);
+	}
+
+}

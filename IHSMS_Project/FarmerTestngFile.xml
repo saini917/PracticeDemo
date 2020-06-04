@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="Suite" parallel="classes">
+
+	<listeners>
+		<listener class-name="com.utils.Listeners" /> 
+	</listeners>
+	<test name="verify Farmer Login">
+		<classes>
+			<!-- <class name="com.RegistrationOfFruitNursery.FarmerLoginPageTest" /> -->
+			<class name="com.RegistrationOfFruitNursery.Test3" />
+	</test>
+</classes>
+</test>
+</suite> 
